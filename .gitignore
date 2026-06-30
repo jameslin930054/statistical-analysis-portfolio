@@ -1,0 +1,40 @@
+# Ignore private uploads folder
+private_uploads/
+
+# Large datasets and model files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.h5
+*.hdf5
+*.pkl
+*.pt
+*.pth
+*.onnx
+*.bin
+*.mat
+*.npy
+*.npz
+*.csv
+*.parquet
+*.feather
+*.sqlite
+*.db
+
+# Jupyter / notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/

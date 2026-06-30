@@ -1,0 +1,34 @@
+name: Auto Push to GitHub
+
+# 触发条件：每天凌晨1点自动推送
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 每天UTC时间1点运行
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 获取完整历史
+
+      - name: Configure Git
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+
+      - name: Create commit if changes exist
+        run: |
+          if ! git diff-index --quiet HEAD --; then
+            git add .
+            git commit -m "Auto commit: $(date +'%Y-%m-%d %H:%M:%S')"
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Push to GitHub
+        run: git push origin main || git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
