@@ -1,9 +1,9 @@
 name: Auto Push to GitHub
 
-# 触发条件：每天凌晨1点自动推送
+# 触发条件：每月1号凌晨1点自动推送
 on:
   schedule:
-    - cron: '0 1 * * *'  # 每天UTC时间1点运行
+    - cron: '0 1 1 * *'  # 每月1号UTC时间1点运行
   workflow_dispatch:  # 允许手动触发
 
 jobs:
